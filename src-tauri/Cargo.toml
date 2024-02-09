@@ -1,0 +1,27 @@
+[package]
+name = "tauri-llama"
+version = "0.1.0"
+description = "Tauri Llama - A Llama Chatbot using Tauri + Leptos + Tailwind"
+authors = ["Al Colmenar <aljcolmenar@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+llm = { git = "https://github.com/rustformers/llm.git", default-features = false, rev = "9376078", features = ["models", "metal", "tokenizers-remote"] }
+models = { path = "../models" }
+rand = "0.8.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tauri = { version = "1.5", features = [ "api-all", "tracing"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2" # For file output
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

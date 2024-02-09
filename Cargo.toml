@@ -1,0 +1,23 @@
+[package]
+name = "tauri-llama-ui"
+description = "Tauri Llama - A Llama Chatbot using Tauri + Leptos + Tailwind"
+authors = ["Al Colmenar <aljcolmenar@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+futures = { version = "0.3.3" }
+js-sys = "0.3"
+leptos = { version = "0.5", features = ["csr"] }
+leptos_heroicons = { git = "https://github.com/bbstilson/leptos_heroicons.git", rev = "b7f7be1", features = ["24-outline"] }
+models = { path = "models" }
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", rev = "6983d92", features = ["all"] }
+wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3.68", features = ["File", "FileList"] }
+
+[workspace]
+members = ["src-tauri"]
