@@ -100,19 +100,18 @@ pub fn SettingsIcon(expanded: RwSignal<bool>, show: Signal<bool>) -> impl IntoVi
     }
 }
 
-pub const SETTINGS_BAR_CLASS: &'static str = "absolute w-1/2 transition-expanded ease-in-out \
+pub const SETTINGS_BAR_CLASS: &str = "absolute w-1/2 transition-expanded ease-in-out \
 duration-300 bg-gray-200 border-t border-r border-b border-gray-300 rounded-r-lg z-10 p-4 \
 justify-center
 
 data-[expanded=true]:left-0
 data-[expanded=false]:-left-1/2";
 
-pub const ICON_CLASS: &'static str = "relative float-right h-10 w-10 -right-14 -top-4";
-pub const LABEL_CLASS: &'static str =
-    "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
+pub const ICON_CLASS: &str = "relative float-right h-10 w-10 -right-14 -top-4";
+pub const LABEL_CLASS: &str = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
 
-pub const PATH_CLASS: &'static str =
+pub const PATH_CLASS: &str =
     "block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer \
         bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 \
         dark:placeholder-gray-400";
-pub const LOAD_MODEL_CLASS: &'static str = "p-2 bg-blue-500 text-white rounded-md cursor-pointer";
+pub const LOAD_MODEL_CLASS: &str = "p-2 bg-blue-500 text-white rounded-md cursor-pointer";

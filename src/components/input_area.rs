@@ -24,7 +24,7 @@ pub fn InputArea(conversation: RwSignal<Conversation>) -> impl IntoView {
     });
 
     create_effect(move |_| {
-        if let Some(_) = send.input().get() {
+        if send.input().get().is_some() {
             let model_message = Message {
                 user: false,
                 text: String::from("..."),

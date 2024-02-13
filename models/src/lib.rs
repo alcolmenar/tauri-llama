@@ -13,6 +13,12 @@ impl Conversation {
     }
 }
 
+impl Default for Conversation {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[derive(PartialEq, Eq, Serialize, Deserialize, Clone, Debug)]
 pub struct Message {
     pub user: bool,
