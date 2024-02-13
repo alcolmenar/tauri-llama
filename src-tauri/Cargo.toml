@@ -11,7 +11,6 @@ edition = "2021"
 tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-llm = { git = "https://github.com/rustformers/llm.git", default-features = false, rev = "9376078", features = ["models", "metal", "tokenizers-remote"] }
 models = { path = "../models" }
 rand = "0.8.5"
 serde = { version = "1.0", features = ["derive"] }
@@ -20,6 +19,12 @@ tauri = { version = "1.5", features = [ "dialog-open", "tracing"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing-appender = "0.2" # For file output
+
+[target.'cfg(target_os = "macos")'.dependencies]
+llm = { git = "https://github.com/rustformers/llm", default-features = false, rev = "9376078", features = ["models", "metal", "tokenizers-remote"] }
+
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+llm = { git = "https://github.com/rustformers/llm", default-features = false, rev = "9376078", features = ["models", "cublas", "tokenizers-remote"] } 
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

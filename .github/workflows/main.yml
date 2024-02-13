@@ -43,11 +43,29 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
 
+      - name: Install CUDA toolkit on Linux
+        uses: Jimver/cuda-toolkit@v0.2.11
+        if: matrix.platform == 'ubuntu-latest'
+        id: cuda-toolkit-linux
+        with:
+          cuda: '12.2.0'
+          method: 'network'
+          non-cuda-sub-packages: '["libcublas","libcublas-dev"]'
+          sub-packages: '["nvcc","compiler","libraries","libraries-dev","cudart","cudart-dev"]'
+
+      - name: Install CUDA toolkit on Windows
+        uses: Jimver/cuda-toolkit@v0.2.11
+        if: matrix.platform == 'windows-latest'
+        id: cuda-toolkit-windows
+        with:
+          cuda: '12.2.0'
+          method: 'local'
+
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
+          sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf llvm clang
 
       - name: Install Trunk
         uses: jetli/trunk-action@v0.4.0
