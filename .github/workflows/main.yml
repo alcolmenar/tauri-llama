@@ -40,6 +40,8 @@ jobs:
 
       - name: install Rust (nightly)
         uses: dtolnay/rust-toolchain@nightly
+        with:
+          targets: wasm32-unknown-unknown
 
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
